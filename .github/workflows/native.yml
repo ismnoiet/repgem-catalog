@@ -1,0 +1,50 @@
+name: native-tests
+# Runs scripts/check.sh (tests first, then builds) only for the items a change touched, so editing one package from the
+# admin app re-runs just that package. Job names read "package:<slug>" / "interaction:<slug>" in the Actions list.
+# The same check.sh is what a user runs after cloning a mirrored package.
+on:
+  pull_request:
+    paths: ['packages/**', 'interactions/**', '.github/workflows/native.yml']
+  push:
+    branches: [main, draft]
+    paths: ['packages/**', 'interactions/**', '.github/workflows/native.yml']
+  workflow_dispatch:   # manual run checks every item
+
+jobs:
+  detect:
+    name: detect changes
+    runs-on: ubuntu-latest
+    outputs:
+      items: ${{ steps.items.outputs.items }}
+      any: ${{ steps.items.outputs.any }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - id: items
+        env:
+          BASE: ${{ github.event_name == 'workflow_dispatch' && 'all' || github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          items="$(./scripts/changed-items.sh "$BASE" "$GITHUB_SHA")"
+          echo "$items" | jq .
+          echo "items=$items" >> "$GITHUB_OUTPUT"
+          echo "any=$([ "$items" = '[]' ] && echo false || echo true)" >> "$GITHUB_OUTPUT"
+
+  check:
+    name: ${{ matrix.kind }}:${{ matrix.slug }}
+    needs: detect
+    if: needs.detect.outputs.any == 'true'
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJSON(needs.detect.outputs.items) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - if: matrix.platform == 'android'
+        uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: 17 }
+      - if: matrix.platform == 'android'
+        uses: gradle/actions/setup-gradle@v4
+      - run: ./scripts/check.sh
+        working-directory: ${{ matrix.dir }}

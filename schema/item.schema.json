@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Repgem catalog item",
+  "type": "object",
+  "required": [
+    "id",
+    "slug",
+    "title",
+    "kind",
+    "desc",
+    "tags",
+    "sources"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "description": "Semver of a package. The mirror sync tags the mirror repo <version> and creates a GitHub release when that tag does not exist yet."
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9]{3,}$"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "enum": [
+        "beam",
+        "board",
+        "counter",
+        "dock",
+        "loader",
+        "menubar",
+        "range",
+        "ripple",
+        "route",
+        "sheet",
+        "swipe",
+        "toggle",
+        "window",
+        "xgroup",
+        "xnav",
+        "xsplash",
+        "xtray"
+      ]
+    },
+    "desc": {
+      "type": "string"
+    },
+    "long": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "object",
+      "properties": {
+        "gesture": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "pattern": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "effect": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "element": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "added": {
+      "type": "string"
+    },
+    "hidden": {
+      "type": "boolean"
+    },
+    "inspiration": {
+      "type": "object"
+    },
+    "video": {
+      "type": "string"
+    },
+    "poster": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "id": "010",
+  "slug": "sticky-range-slider-ios",
+  "version": "1.0.0",
+  "title": "Sticky Range Slider",
+  "kind": "range",
+  "desc": "Gooey range slider for SwiftUI: pills that spring after your finger and fuse when they meet.",
+  "long": "A sticky, gooey range slider. The value pills spring after your finger and stick to the track ends. When the two handles meet they fuse into one pill and pull apart again with a stretchy neck. Tap the track and the nearest handle glides there, digits roll as you drag, and the frame loop stops as soon as everything is at rest. It supports one handle or two, dark and light presets or any accent color, tunable spring timing, haptics, VoiceOver and Reduce Motion.",
+  "repo": "https://github.com/ismnoiet/repgem-catalog/tree/main/packages/ios/sticky-range-slider-ios",
+  "artifact": "sticky-range-slider-ios",
+  "params": [
+    [
+      "value / lower, upper",
+      "Binding<Int>. The selected value (one handle) or range (two handles)."
+    ],
+    [
+      "bounds",
+      "ClosedRange<Int>. Smallest and largest value. Default 20...400."
+    ],
+    [
+      "step",
+      "Values snap to multiples of this. Default 5."
+    ],
+    [
+      "prefix, suffix",
+      "Text before and after a value. Default \"$\" and none."
+    ],
+    [
+      "style",
+      "StickySliderStyle: .ink (default, for light surfaces), .paper (for dark ones) or .accent(color), or build your own."
+    ],
+    [
+      "timing",
+      "StickyTiming with follow (0.22 s), glide (0.37 s), merge (0.26 s) and digitRoll (0.28 s)."
+    ],
+    [
+      "haptics",
+      "A tick on every step and a soft tap when the pills fuse. Default true."
+    ],
+    [
+      "accessibilityName",
+      "VoiceOver label. Default \"Value\" or \"Range\"."
+    ],
+    [
+      "onEditingChanged",
+      "Called with true when a drag starts and false when it ends."
+    ]
+  ],
+  "sources": [
+    {
+      "tab": "Quick start",
+      "file": "examples/QuickStart.swift"
+    },
+    {
+      "tab": "Styles",
+      "file": "examples/Styles.swift"
+    },
+    {
+      "tab": "Timing",
+      "file": "examples/Timing.swift"
+    }
+  ],
+  "tags": {
+    "gesture": [
+      "Drag",
+      "Tap"
+    ],
+    "pattern": [
+      "Input",
+      "Merge"
+    ],
+    "effect": [
+      "Gooey",
+      "Spring"
+    ],
+    "element": [
+      "Slider",
+      "Pill"
+    ]
+  },
+  "meta": [
+    [
+      "Version",
+      "1.0.0"
+    ],
+    [
+      "Requires",
+      "iOS 17, macOS 14, visionOS 1"
+    ],
+    [
+      "Toolchain",
+      "Swift 5.9, Xcode 15"
+    ],
+    [
+      "License",
+      "MIT"
+    ]
+  ],
+  "steps": [
+    [
+      "1. Add the package in Xcode (File, Add Package Dependencies) or in Package.swift",
+      ".package(url: \"https://github.com/ismnoiet/sticky-range-slider-ios\", from: \"1.0.0\")"
+    ],
+    [
+      "2. Add the StickyRangeSlider product to your target, then import it",
+      "import StickyRangeSlider"
+    ]
+  ],
+  "fill": true,
+  "hidden": true
+}

@@ -1,0 +1,72 @@
+{
+  "id": "003",
+  "version": "1.0.0",
+  "slug": "notification-tray",
+  "title": "Notification Icon Tray",
+  "kind": "xtray",
+  "desc": "Notifications collapse into small icons in a tray as you scroll.",
+  "long": "An Android-style notification shade with an icon tray pinned at the bottom. As notifications scroll under the tray they collapse into small icons that slide in from the left and join the group. Everything is a continuous function of scroll position, so fast drags are fast, slow drags are slow, and it plays backwards when you drag the other way.",
+  "stats": [
+    [
+      "Duration",
+      "Scroll-driven"
+    ],
+    [
+      "Easing",
+      "Smoothstep"
+    ],
+    [
+      "Min iOS",
+      "17"
+    ],
+    [
+      "Framework",
+      "SwiftUI"
+    ]
+  ],
+  "spec": [
+    [
+      "driver",
+      "Each notification's progress is read from how far it has gone under the tray, so every icon follows the scroll position."
+    ],
+    [
+      "tray",
+      "A new icon slides in from the left and pushes the ones already there right by one pitch while it fades in."
+    ],
+    [
+      "spring",
+      "Each icon chases its target with a slightly under-damped spring, so a fast flick stays smooth."
+    ],
+    [
+      "order",
+      "Icons arrive bottom-up and leave in reverse; one can only be as far in as 2.5 times the icon after it."
+    ]
+  ],
+  "sources": [
+    {
+      "tab": "SwiftUI",
+      "file": "AndroidStyleNotificationIconTray.swift"
+    },
+    {
+      "tab": "Add to project",
+      "file": "Usage.swift"
+    }
+  ],
+  "tags": {
+    "gesture": [
+      "Scroll"
+    ],
+    "pattern": [
+      "Notifications"
+    ],
+    "effect": [
+      "Collapse",
+      "Morph"
+    ],
+    "element": [
+      "Notification",
+      "Tray"
+    ]
+  },
+  "fill": true
+}

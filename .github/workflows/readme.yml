@@ -1,0 +1,33 @@
+name: readme
+
+# Keeps the item tables and counts in README.md in step with the catalog: an item that is shown, hidden, added, removed or edited changes the
+# list. Runs when an item.json changes on main (the admin app's Hide, Show and Delete are commits too) and commits README.md when it differs.
+on:
+  push:
+    branches: [main]
+    paths: ['packages/**/item.json', 'interactions/**/item.json', 'scripts/readme.ts']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: readme
+  cancel-in-progress: false
+
+jobs:
+  readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun run readme
+      - name: Commit README.md
+        run: |
+          if git diff --quiet -- README.md; then echo "README.md is up to date"; exit 0; fi
+          git config user.name "ismnoiet"
+          git config user.email "ismnoiet@users.noreply.github.com"
+          git add README.md
+          git commit -m "README: update the item list"
+          git pull --rebase -q origin main
+          git push origin HEAD:main

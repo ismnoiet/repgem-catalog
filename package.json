@@ -1,0 +1,22 @@
+{
+  "name": "repgem-catalog",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Repgem catalog: interactions and packages, with their source code.",
+  "type": "module",
+  "scripts": {
+    "new": "bun scripts/new-item.ts",
+    "validate": "bun scripts/validate.ts",
+    "test": "bun scripts/test.ts",
+    "list": "bun scripts/list.ts",
+    "test:native": "bun scripts/native.ts",
+    "sync-tests": "bun scripts/sync-item-tests.ts",
+    "sync-common": "bun scripts/sync-common.ts",
+    "readme": "bun scripts/readme.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.6.0"
+  }
+}

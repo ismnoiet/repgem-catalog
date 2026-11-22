@@ -1,0 +1,29 @@
+name: notify-site
+
+# When the catalog changes on main, ask the site repo to rebuild and redeploy app.repgem.com.
+# Needs a secret REPGEM_APPS_WRITE_TOKEN: a fine-grained PAT with "Contents: read/write" on ismnoiet/repgem-apps.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'interactions/**'
+      - 'packages/**'
+      - 'media.json'
+      - 'featured.json'
+      - 'social.json'
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger site deploy
+        env:
+          TOKEN: ${{ secrets.REPGEM_APPS_WRITE_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then echo "REPGEM_APPS_WRITE_TOKEN is not set, skipping"; exit 0; fi
+          curl -fsS -X POST \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/ismnoiet/repgem-apps/dispatches \
+            -d '{"event_type":"catalog-updated","client_payload":{"sha":"${{ github.sha }}"}}'

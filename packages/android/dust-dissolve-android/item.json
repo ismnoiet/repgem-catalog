@@ -1,0 +1,116 @@
+{
+  "id": "005",
+  "slug": "dust-dissolve-android",
+  "version": "1.0.0",
+  "title": "Dust Dissolve",
+  "kind": "dust",
+  "desc": "Turn any Jetpack Compose view into dust, with an AGSL shader and a particle cloud.",
+  "long": "Turn any view into dust. A shader eats the view away in any direction, and a cloud of pastel dots is born exactly where it disappears, then flows to a target, drifts off, falls or bursts. Built for a coupon flowing into a total, but it works for dismissing cards, deleting rows, avatars and whole grids. The view never leaves the layout, so nothing around it moves.",
+  "repo": "https://github.com/ismnoiet/repgem-catalog/tree/main/packages/android/dust-dissolve-android",
+  "artifact": "dustdissolve",
+  "params": [
+    [
+      "shimmer",
+      "A light line crosses the view before it dissolves. Default true."
+    ],
+    [
+      "direction",
+      "Which way the view is eaten away: LeftToRight, RightToLeft, TopToBottom, BottomToTop or CenterOut."
+    ],
+    [
+      "motion",
+      "Where the dust goes: flow to a target, drift in one direction, or burst outward."
+    ],
+    [
+      "shape",
+      "Rectangle, or ellipse for round views so no dots appear in the empty corners."
+    ],
+    [
+      "dissolveStart, dissolveEnd",
+      "When the view is eaten away, in seconds since fire(). Default 0.55 to 1.10."
+    ],
+    [
+      "flightStart, flightStagger",
+      "When the cloud starts moving and the random extra delay per dot."
+    ],
+    [
+      "particleCount",
+      "Number of dots. Default 1100."
+    ],
+    [
+      "palette",
+      "Any list of colors, picked at random per dot. Default pastel."
+    ],
+    [
+      "seed",
+      "Random seed. Give each view its own for variety."
+    ]
+  ],
+  "steps": [
+    [
+      "settings.gradle.kts",
+      "dependencyResolutionManagement { repositories { maven(\"https://jitpack.io\") } }"
+    ],
+    [
+      "app/build.gradle.kts",
+      "dependencies { implementation(\"com.github.ismnoiet.dust-dissolve-android:dustdissolve:1.0.0\") }"
+    ]
+  ],
+  "meta": [
+    [
+      "Version",
+      "1.0.0"
+    ],
+    [
+      "Min SDK",
+      "Android 7.0 (API 24)"
+    ],
+    [
+      "Shader",
+      "AGSL on Android 13+, straight-edged fallback below"
+    ],
+    [
+      "Compose",
+      "BOM 2024.02.00"
+    ],
+    [
+      "License",
+      "MIT"
+    ]
+  ],
+  "contains": [],
+  "sources": [
+    {
+      "tab": "Quick start",
+      "file": "examples/QuickStart.kt"
+    },
+    {
+      "tab": "Presets",
+      "file": "examples/Presets.kt"
+    },
+    {
+      "tab": "Many at once",
+      "file": "examples/Grid.kt"
+    }
+  ],
+  "tags": {
+    "gesture": [
+      "Tap"
+    ],
+    "pattern": [
+      "Dismiss",
+      "Delete"
+    ],
+    "effect": [
+      "Shader",
+      "Particles",
+      "Dissolve"
+    ],
+    "element": [
+      "Card",
+      "Message",
+      "Badge"
+    ]
+  },
+  "fill": true
+}

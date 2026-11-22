@@ -1,0 +1,59 @@
+{
+  "$comment": "Allowed values for item.json. The site owns the kinds (each needs a preview style); keep this file in sync with it.",
+  "kinds": [
+    "beam",
+    "board",
+    "counter",
+    "dock",
+    "dust",
+    "loader",
+    "menubar",
+    "range",
+    "ripple",
+    "route",
+    "sheet",
+    "swipe",
+    "toggle",
+    "window",
+    "xgroup",
+    "xnav",
+    "xsplash",
+    "xtray"
+  ],
+  "tagAxes": [
+    "gesture",
+    "pattern",
+    "effect",
+    "element"
+  ],
+  "domains": {
+    "interactions": [
+      "ios",
+      "android",
+      "macos",
+      "cross-platform"
+    ],
+    "packages": [
+      "ios",
+      "android",
+      "macos",
+      "react-native"
+    ]
+  },
+  "sourceExtensions": [
+    ".swift",
+    ".kt",
+    ".kts",
+    ".xml",
+    ".ts",
+    ".tsx",
+    ".js",
+    ".jsx",
+    ".gradle",
+    ".java",
+    ".m",
+    ".h",
+    ".metal",
+    ".md"
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "id": "007",
+  "version": "1.0.0",
+  "slug": "trip-splash",
+  "title": "Trip Splash",
+  "kind": "xsplash",
+  "desc": "A wordmark collapses into a dot that streaks across the screen and reveals the home screen.",
+  "long": "A launch animation driven by a single clock. The wordmark spreads out from the orange dot, collapses into it, and the dot stretches into a gradient line that sweeps off the right edge. The moment the line head touches the edge, a fast circular sweep reveals the home screen. Tap to replay.",
+  "stats": [
+    [
+      "Duration",
+      "≈ 1.3 s"
+    ],
+    [
+      "Easing",
+      "cubic-bezier(.25, 0, .05, 1)"
+    ],
+    [
+      "Min iOS",
+      "17"
+    ],
+    [
+      "Input",
+      "Tap to replay"
+    ]
+  ],
+  "spec": [
+    [
+      "clock",
+      "One TimelineView drives every piece from a shared time value t."
+    ],
+    [
+      "wordmark",
+      "0.45 to 0.80 s: letters spread, the dot swells, then everything collapses into the dot."
+    ],
+    [
+      "line",
+      "From 0.80 s the dot stretches into a gradient line that exits right on a closed-form curve."
+    ],
+    [
+      "reveal",
+      "When the line head reaches the right edge, a circular mask grows from the left over 0.45 s."
+    ]
+  ],
+  "sources": [
+    {
+      "tab": "SwiftUI",
+      "file": "TripsplashAnimation.swift"
+    },
+    {
+      "tab": "Add to project",
+      "file": "Usage.swift"
+    }
+  ],
+  "tags": {
+    "gesture": [
+      "Tap"
+    ],
+    "pattern": [
+      "Launch",
+      "Onboarding"
+    ],
+    "effect": [
+      "Morph",
+      "Mask reveal",
+      "Stagger"
+    ],
+    "element": [
+      "Splash",
+      "Wordmark"
+    ]
+  },
+  "fill": true,
+  "posterAt": 1.5,
+  "hidden": true
+}

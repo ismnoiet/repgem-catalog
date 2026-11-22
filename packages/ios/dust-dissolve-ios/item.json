@@ -1,0 +1,117 @@
+{
+  "id": "004",
+  "slug": "dust-dissolve-ios",
+  "version": "1.0.0",
+  "title": "Dust Dissolve",
+  "kind": "dust",
+  "desc": "Turn any SwiftUI view into dust, with a Metal shader and a particle cloud.",
+  "long": "Turn any view into dust. A shader eats the view away in any direction, and a cloud of pastel dots is born exactly where it disappears, then flows to a target, drifts off, falls or bursts. Built for a coupon flowing into a total, but it works for dismissing cards, deleting rows, avatars and whole grids. The view never leaves the layout, so nothing around it moves.",
+  "repo": "https://github.com/ismnoiet/repgem-catalog/tree/main/packages/ios/dust-dissolve-ios",
+  "artifact": "dust-dissolve-ios",
+  "params": [
+    [
+      "shimmer",
+      "A light line crosses the view before it dissolves. Default true."
+    ],
+    [
+      "direction",
+      "Which way the view is eaten away: leftToRight, rightToLeft, topToBottom, bottomToTop or centerOut."
+    ],
+    [
+      "motion",
+      "Where the dust goes: flow to a target, drift in one direction, or burst outward."
+    ],
+    [
+      "shape",
+      "Rectangle, or ellipse for round views so no dots appear in the empty corners."
+    ],
+    [
+      "dissolveStart, dissolveEnd",
+      "When the view is eaten away, in seconds since fire(). Default 0.55 to 1.10."
+    ],
+    [
+      "flightStart, flightStagger",
+      "When the cloud starts moving and the random extra delay per dot."
+    ],
+    [
+      "particleCount",
+      "Number of dots. Default 1100."
+    ],
+    [
+      "palette",
+      "Any list of colors, picked at random per dot. Default pastel."
+    ],
+    [
+      "seed",
+      "Random seed. Give each view its own for variety."
+    ]
+  ],
+  "steps": [
+    [
+      "1. Add the package in Xcode (File, Add Package Dependencies) or in Package.swift",
+      ".package(url: \"https://github.com/ismnoiet/dust-dissolve-ios\", from: \"1.0.0\")"
+    ],
+    [
+      "2. Add the DustDissolve product to your target, then import it",
+      "import DustDissolve"
+    ]
+  ],
+  "meta": [
+    [
+      "Version",
+      "1.0.0"
+    ],
+    [
+      "Requires",
+      "iOS 17, macOS 14, visionOS 1"
+    ],
+    [
+      "Toolchain",
+      "Swift 5.9, Xcode 15"
+    ],
+    [
+      "License",
+      "MIT"
+    ]
+  ],
+  "sources": [
+    {
+      "tab": "Quick start",
+      "file": "examples/ContentView.swift"
+    },
+    {
+      "tab": "Presets",
+      "file": "examples/Presets.swift"
+    },
+    {
+      "tab": "Many at once",
+      "file": "examples/Grid.swift"
+    }
+  ],
+  "tags": {
+    "gesture": [
+      "Tap"
+    ],
+    "pattern": [
+      "Dismiss",
+      "Delete"
+    ],
+    "effect": [
+      "Shader",
+      "Particles",
+      "Dissolve"
+    ],
+    "element": [
+      "Card",
+      "Message",
+      "Badge"
+    ]
+  },
+  "fill": true,
+  "inspiration": [
+    {
+      "title": "Great work of @AetherMaker on X",
+      "url": "https://x.com/AetherMaker/status/2123480143310078451"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "id": "002",
+  "version": "1.0.0",
+  "slug": "notification-group",
+  "title": "Notification Group",
+  "kind": "xgroup",
+  "desc": "Grouped notification card that expands and collapses on tap or drag.",
+  "long": "An Android-style expandable notification group. The whole animation is driven by a single progress value, 0 collapsed to 1 expanded, and every element derives its own position and opacity from it, so tapping, dragging and flicking stay perfectly in sync.",
+  "stats": [
+    [
+      "Duration",
+      "0.42 s"
+    ],
+    [
+      "Easing",
+      "cubic-bezier(.4, 0, .2, 1)"
+    ],
+    [
+      "Input",
+      "Tap or drag"
+    ],
+    [
+      "Framework",
+      "SwiftUI"
+    ]
+  ],
+  "spec": [
+    [
+      "driver",
+      "One value, progress, runs from 0 (collapsed) to 1 (expanded); every element derives its own position and opacity from it."
+    ],
+    [
+      "drag",
+      "The card follows the finger 1:1 over 110 pt of travel; on release it settles to the state the gesture was heading towards."
+    ],
+    [
+      "motion",
+      "The avatars and sender names snap into place late (progress^2.4) and the second row opens up near the end."
+    ],
+    [
+      "text",
+      "The inline message fades out as the full subtitle is uncovered under the growing avatar."
+    ]
+  ],
+  "sources": [
+    {
+      "tab": "SwiftUI",
+      "file": "AndroidStyleNotificationGroup.swift"
+    },
+    {
+      "tab": "Add to project",
+      "file": "Usage.swift"
+    }
+  ],
+  "tags": {
+    "gesture": [
+      "Tap",
+      "Drag"
+    ],
+    "pattern": [
+      "Notifications"
+    ],
+    "effect": [
+      "Expand",
+      "Stagger",
+      "Spring physics"
+    ],
+    "element": [
+      "Notification",
+      "Card"
+    ]
+  },
+  "fill": true
+}

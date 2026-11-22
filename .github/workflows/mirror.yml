@@ -1,0 +1,52 @@
+name: mirror
+
+# One-way sync of item folders to their own repositories (<owner>/<slug>). Create a mirror repo first (admin app: row menu, Mirror repo);
+# items whose mirror does not exist are skipped. The admin app's "Sync now" starts this workflow for one item.
+# Secrets and variables: REPGEM_MIRRORS_WRITE_TOKEN (fine-grained PAT: Contents and Workflows read/write on the mirror repos),
+# optional variable MIRROR_OWNER (defaults to the owner of this repository).
+# The run is titled "mirror:<package-name>" (the admin passes `name`; a hand-started run falls back to the item folder).
+run-name: ${{ github.event_name == 'workflow_dispatch' && format('mirror:{0}', github.event.inputs.name || github.event.inputs.item || 'all') || 'mirror:changed-items' }}
+
+on:
+  push:
+    branches: [main]
+    paths: ['packages/**', 'interactions/**']
+  workflow_dispatch:
+    inputs:
+      item:
+        description: 'Item folder to sync, e.g. packages/ios/border-beam-ios (empty = all items)'
+        required: false
+        default: ''
+      name:
+        description: 'Package name, only used for the run title (e.g. border-beam-ios)'
+        required: false
+        default: ''
+
+concurrency:
+  group: mirror
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: Sync mirrors
+        env:
+          MIRROR_TOKEN: ${{ secrets.REPGEM_MIRRORS_WRITE_TOKEN }}
+          MIRROR_OWNER: ${{ vars.MIRROR_OWNER || github.repository_owner }}
+          ITEM: ${{ github.event.inputs.item }}
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if [ -n "$ITEM" ]; then
+            case "$ITEM" in packages/*/*|interactions/*/*) dirs="$ITEM" ;; *) echo "bad item: $ITEM" >&2; exit 1 ;; esac
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            dirs="$(./scripts/changed-items.sh all | jq -r '.[].dir')"
+          else
+            dirs="$(./scripts/changed-items.sh "$BEFORE" "$GITHUB_SHA" | jq -r '.[].dir')"
+          fi
+          if [ -z "$dirs" ]; then echo "no items to sync"; exit 0; fi
+          echo "$dirs"
+          # shellcheck disable=SC2086
+          bash ./scripts/mirror-sync.sh $dirs

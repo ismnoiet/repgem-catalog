@@ -1,0 +1,50 @@
+{
+  "border-beam-android": [
+    "demo.mp4",
+    "poster.jpg"
+  ],
+  "border-beam-ios": [
+    "demo.mp4",
+    "poster.jpg"
+  ],
+  "dragable-cards-android": [
+    "demo.mp4",
+    "poster.jpg"
+  ],
+  "dragable-cards-ios": [
+    "demo.mp4",
+    "poster.jpg"
+  ],
+  "dust-dissolve-android": [
+    "demo.mp4?h=395ecdc8",
+    "poster.jpg?h=6e0ad2d2"
+  ],
+  "dust-dissolve-ios": [
+    "demo.mp4?h=0ea35e04",
+    "poster.jpg?h=123b913f"
+  ],
+  "notification-group": [
+    "demo.mp4?h=d38045f3",
+    "poster.jpg?h=112da1c7"
+  ],
+  "notification-tray": [
+    "demo.mp4?h=0d4298e1",
+    "poster.jpg?h=e82485a2"
+  ],
+  "predictive-nav": [
+    "demo.mp4",
+    "poster.jpg"
+  ],
+  "sticky-range-slider-android": [
+    "demo.mp4",
+    "poster.jpg"
+  ],
+  "sticky-range-slider-ios": [
+    "demo.mp4",
+    "poster.jpg"
+  ],
+  "trip-splash": [
+    "demo.mp4",
+    "poster.jpg"
+  ]
+}

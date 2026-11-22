@@ -1,0 +1,123 @@
+{
+  "id": "011",
+  "slug": "sticky-range-slider-android",
+  "version": "1.0.0",
+  "title": "Sticky Range Slider",
+  "kind": "range",
+  "desc": "Gooey range slider for Jetpack Compose: pills that spring after your finger and fuse when they meet.",
+  "long": "A sticky, gooey range slider. The value pills spring after your finger and stick to the track ends. When the two handles meet they fuse into one pill and pull apart again with a stretchy neck. Tap the track and the nearest handle glides there, digits roll as you drag, and the frame loop stops as soon as everything is at rest. It supports one handle or two, dark and light presets or any accent color, tunable spring timing, haptics and TalkBack. The gooey fuse runs on Android 12 and up; older versions draw plain pills.",
+  "repo": "https://github.com/ismnoiet/repgem-catalog/tree/main/packages/android/sticky-range-slider-android",
+  "artifact": "stickyrangeslider",
+  "params": [
+    [
+      "value / lower, upper",
+      "Int. The selected value (one handle) or range (two handles)."
+    ],
+    [
+      "onValueChange / onRangeChange",
+      "(Int) -> Unit or (Int, Int) -> Unit. Called as the value changes."
+    ],
+    [
+      "bounds",
+      "IntRange. Smallest and largest value. Default 20..400."
+    ],
+    [
+      "step",
+      "Values snap to multiples of this. Default 5."
+    ],
+    [
+      "prefix, suffix",
+      "Text before and after a value. Default \"$\" and none."
+    ],
+    [
+      "style",
+      "StickySliderStyle.ink (default, for light surfaces), .paper (for dark ones) or .accent(color), or build your own."
+    ],
+    [
+      "timing",
+      "StickyTiming with follow (0.22 s), glide (0.37 s), merge (0.26 s) and digitRoll (0.28 s)."
+    ],
+    [
+      "haptics",
+      "A tick on every step and a tap when the pills fuse. Default true."
+    ],
+    [
+      "accessibilityName",
+      "TalkBack label. Default \"Value\" or \"Range\"."
+    ],
+    [
+      "onEditingChanged",
+      "Called with true when a drag starts and false when it ends."
+    ],
+    [
+      "modifier",
+      "Standard Compose Modifier. The slider fills the width you give it and is 72 dp tall."
+    ]
+  ],
+  "sources": [
+    {
+      "tab": "Quick start",
+      "file": "examples/QuickStart.kt"
+    },
+    {
+      "tab": "Styles",
+      "file": "examples/Styles.kt"
+    },
+    {
+      "tab": "Timing",
+      "file": "examples/Timing.kt"
+    }
+  ],
+  "tags": {
+    "gesture": [
+      "Drag",
+      "Tap"
+    ],
+    "pattern": [
+      "Input",
+      "Merge"
+    ],
+    "effect": [
+      "Gooey",
+      "Spring"
+    ],
+    "element": [
+      "Slider",
+      "Pill"
+    ]
+  },
+  "meta": [
+    [
+      "Version",
+      "1.0.0"
+    ],
+    [
+      "Min SDK",
+      "Android 7.0 (API 24)"
+    ],
+    [
+      "Gooey fuse",
+      "Android 12+ (RenderEffect), plain pills below"
+    ],
+    [
+      "Compose",
+      "BOM 2024.02.00"
+    ],
+    [
+      "License",
+      "MIT"
+    ]
+  ],
+  "steps": [
+    [
+      "settings.gradle.kts",
+      "dependencyResolutionManagement { repositories { maven(\"https://jitpack.io\") } }"
+    ],
+    [
+      "app/build.gradle.kts",
+      "dependencies { implementation(\"com.github.ismnoiet.sticky-range-slider-android:stickyrangeslider:1.0.0\") }"
+    ]
+  ],
+  "fill": true,
+  "hidden": true
+}

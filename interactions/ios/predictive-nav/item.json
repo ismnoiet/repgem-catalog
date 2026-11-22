@@ -1,0 +1,73 @@
+{
+  "id": "001",
+  "version": "1.0.0",
+  "slug": "predictive-nav",
+  "title": "Edge-Swipe Navigation",
+  "kind": "xnav",
+  "desc": "Drag from the screen edge to go back or forward, with a peeling screen.",
+  "long": "Interactive predictive back and forward navigation. Drag from the left edge on the chat to go back to the list, or from the right edge on the list to go forward. One value drives the whole transition, so it follows your finger across the screen and commits past about a third of the width or on a fast flick.",
+  "stats": [
+    [
+      "Duration",
+      "0.32 s"
+    ],
+    [
+      "Easing",
+      "cubic-bezier(.2, 0, 0, 1)"
+    ],
+    [
+      "Min iOS",
+      "17"
+    ],
+    [
+      "Input",
+      "Edge drag"
+    ]
+  ],
+  "spec": [
+    [
+      "driver",
+      "One value, q, drives the whole transition: 0 shows the chat, 1 shows the list."
+    ],
+    [
+      "drag",
+      "q follows the finger across the screen; the front screen peels back, rounds its corners and dims."
+    ],
+    [
+      "commit",
+      "On release it commits past about 35% of the width, or on a fast flick."
+    ],
+    [
+      "bubble",
+      "A chevron bubble follows the finger from the touched edge."
+    ]
+  ],
+  "sources": [
+    {
+      "tab": "SwiftUI",
+      "file": "ClaudeStyleNavigation.swift"
+    },
+    {
+      "tab": "Add to project",
+      "file": "Usage.swift"
+    }
+  ],
+  "tags": {
+    "gesture": [
+      "Swipe",
+      "Drag"
+    ],
+    "pattern": [
+      "Navigation"
+    ],
+    "effect": [
+      "Parallax",
+      "Peel",
+      "Spring physics"
+    ],
+    "element": [
+      "Screen"
+    ]
+  },
+  "fill": true
+}
