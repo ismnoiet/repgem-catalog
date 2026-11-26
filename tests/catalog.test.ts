@@ -105,6 +105,20 @@ describe('catalog', () => {
     expect(bad).toEqual([])
   })
 
+  test('every visible item has a demo video and a poster image listed in media.json', () => {
+    const man = readManifest(ROOT)
+    const bad: string[] = []
+    for (const { e, m } of metas) {
+      if (m.hidden) continue
+      const f = names(man[m.slug] ?? [])
+      const video = f.includes('demo.mp4') || f.includes('demo.webm') || Boolean(m.video)
+      const poster = f.includes('poster.jpg') || Boolean(m.poster)
+      if (!video) bad.push(`${e.rel}: no demo video (upload demo.mp4 as "${m.slug}" in the admin so media.json lists it)`)
+      if (!poster) bad.push(`${e.rel}: no poster image (upload poster.jpg as "${m.slug}" in the admin so media.json lists it)`)
+    }
+    expect(bad).toEqual([])
+  })
+
   test('media.json lists only real items, known files, and a poster with every video', () => {
     expect(checkManifest(readManifest(ROOT), metas.map(({ m }) => m.slug))).toEqual([])
   })
