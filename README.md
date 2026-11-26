@@ -10,7 +10,7 @@
 
 A catalog of polished mobile interactions and drop-in packages, ready to use now, with full source.
 
-[![items](https://img.shields.io/badge/items-4-0B6B4F?style=flat-square)](#-packages)
+[![items](https://img.shields.io/badge/items-5-0B6B4F?style=flat-square)](#-packages)
 [![platforms](https://img.shields.io/badge/iOS%20%C2%B7%20Android%20%C2%B7%20macOS-lightgrey?style=flat-square)](#-packages)
 [![license](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
 [![feedback welcome](https://img.shields.io/badge/feedback-welcome-brightgreen?style=flat-square)](CONTRIBUTING.md)
@@ -26,6 +26,7 @@ Drop-in libraries. Click a platform to open that version: what it does, how to i
 
 | Item | What it is | Open |
 |:--|:--|:--|
+| **Firework Flourish** | Fireworks for any SwiftUI view, continuous or one-shot, with built-in styles and palettes. | [![iOS](https://img.shields.io/badge/iOS-3A3F47?style=flat-square&logo=apple&logoColor=FFFFFF&labelColor=3A3F47)](packages/ios/firework-flourish-ios) |
 | **Dust Dissolve** | Turn any SwiftUI view into dust, with a Metal shader and a particle cloud. | [![iOS](https://img.shields.io/badge/iOS-3A3F47?style=flat-square&logo=apple&logoColor=FFFFFF&labelColor=3A3F47)](packages/ios/dust-dissolve-ios) [![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=000000&labelColor=3DDC84)](packages/android/dust-dissolve-android) |
 
 ### ✨ Interactions
@@ -39,7 +40,7 @@ Recipes with full source. Click a platform to open it.
 | **Notification Icon Tray** | Notifications collapse into small icons in a tray as you scroll. | [![iOS](https://img.shields.io/badge/iOS-3A3F47?style=flat-square&logo=apple&logoColor=FFFFFF&labelColor=3A3F47)](interactions/ios/notification-tray) |
 <!-- items:end -->
 
-> **<!-- count -->4<!-- /count --> items** across <!-- versions -->5<!-- /versions --> platform versions so far, and the list grows with every release. ⭐ Star this catalog repo to follow new ones.
+> **<!-- count -->5<!-- /count --> items** across <!-- versions -->6<!-- /versions --> platform versions so far, and the list grows with every release. ⭐ Star this catalog repo to follow new ones.
 
 ## 💡 Why Repgem
 

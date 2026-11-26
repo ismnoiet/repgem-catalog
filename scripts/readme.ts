@@ -11,7 +11,7 @@ const PLATFORMS: Record<string, string> = { ios: '🍎 iOS · SwiftUI', android:
 const ORDER = Object.keys(PLATFORMS)
 const SITE = 'https://repgem.com'
 
-interface Row { domain: string; platform: string; slug: string; title: string; desc: string; family: string; tags: string[] }
+interface Row { domain: string; platform: string; slug: string; id: string; title: string; desc: string; family: string; tags: string[] }
 const dirs = (p: string) => (existsSync(p) ? readdirSync(p).filter((n) => !n.startsWith('.') && statSync(join(p, n)).isDirectory()) : [])
 
 export function load(root = ROOT): Row[] {
@@ -23,7 +23,7 @@ export function load(root = ROOT): Row[] {
         if (!existsSync(f)) continue
         const m = JSON.parse(readFileSync(f, 'utf8'))
         if (m.hidden) continue
-        out.push({ domain, platform, slug, title: m.title, desc: m.desc, family: m.family ?? slug.replace(/-(ios|android|macos|react-native|compose)$/, ''), tags: [...(m.tags?.effect ?? []), ...(m.tags?.element ?? [])].slice(0, 3) })
+        out.push({ domain, platform, slug, id: String(m.id ?? ''), title: m.title, desc: m.desc, family: m.family ?? slug.replace(/-(ios|android|macos|react-native|compose)$/, ''), tags: [...(m.tags?.effect ?? []), ...(m.tags?.element ?? [])].slice(0, 3) })
       }
   return out
 }
@@ -51,7 +51,8 @@ function groups(rows: Row[]): Row[][] {
   for (const r of rows) by.set(`${r.domain}/${r.family}`, [...(by.get(`${r.domain}/${r.family}`) ?? []), r])
   return [...by.values()]
     .map((g) => g.sort((a, b) => rank(a.platform) - rank(b.platform)))
-    .sort((a, b) => a[0].title.localeCompare(b[0].title))
+    // Newest first: the highest item number (the latest addition) is on top; ties fall back to the title.
+    .sort((a, b) => Math.max(...b.map((r) => Number(r.id) || 0)) - Math.max(...a.map((r) => Number(r.id) || 0)) || a[0].title.localeCompare(b[0].title))
 }
 
 /** The first version's description without framework wording ("for SwiftUI", ", drawn by a Metal shader"), since the row covers every platform. */

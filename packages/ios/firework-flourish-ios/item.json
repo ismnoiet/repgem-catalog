@@ -1,0 +1,116 @@
+{
+  "id": "015",
+  "slug": "firework-flourish-ios",
+  "version": "1.0.0",
+  "title": "Firework Flourish",
+  "kind": "fireworks",
+  "desc": "Fireworks for any SwiftUI view, continuous or one-shot, with built-in styles and palettes.",
+  "long": "Fireworks for any view. Rockets rise, flash and burst into twinkling particles that fade out, over a card, a button, a calendar cell or a whole screen. Run it continuously while a view is on screen, or play it once when something happens: a goal, an achievement, a level up, a countdown reaching zero. Thirteen presets and nine palettes cover everything from a quiet sparkle to a full finale, and every knob is a parameter. Nothing is stored between frames, so an idle layer costs nothing.",
+  "repo": "https://github.com/ismnoiet/repgem-catalog/tree/main/packages/ios/firework-flourish-ios",
+  "artifact": "firework-flourish-ios",
+  "params": [
+    [
+      "style",
+      "A preset (card, subtle, milestone, grand, tap, romance, neonPop, embers, sparkle, pastelBloom, newYear, like, frost) or your own FireworkStyle."
+    ],
+    [
+      "active",
+      "Continuous layer only. False fades it out and pauses the timeline, so it costs nothing."
+    ],
+    [
+      "trigger, duration",
+      "One-shot modifier. Change the trigger to play the fireworks once, for duration seconds."
+    ],
+    [
+      "interval, particles",
+      "Seconds between rockets and particles per burst."
+    ],
+    [
+      "maxRadius, gravity",
+      "Burst spread in points and downward drift. Negative gravity makes embers rise."
+    ],
+    [
+      "rocketTime, flashTime, burstLife",
+      "Rise time, glow time and how long the particles take to fade."
+    ],
+    [
+      "xRange, yRange",
+      "Where bursts happen, as a fraction of the width and height."
+    ],
+    [
+      "palettes",
+      "Pairs of colors a burst blends between. Nine ready-made palettes."
+    ],
+    [
+      "fireworkLightBackground()",
+      "Set it on a light surface: normal blending and deeper colors."
+    ]
+  ],
+  "steps": [
+    [
+      "1. Add the package in Xcode (File, Add Package Dependencies) or in Package.swift",
+      ".package(url: \"https://github.com/ismnoiet/firework-flourish-ios\", from: \"1.0.0\")"
+    ],
+    [
+      "2. Add the FireworkFlourish product to your target, then import it",
+      "import FireworkFlourish"
+    ]
+  ],
+  "meta": [
+    [
+      "Version",
+      "1.0.0"
+    ],
+    [
+      "Requires",
+      "iOS 17, macOS 14, visionOS 1"
+    ],
+    [
+      "Toolchain",
+      "Swift 5.9, Xcode 15"
+    ],
+    [
+      "License",
+      "MIT"
+    ]
+  ],
+  "sources": [
+    {
+      "tab": "Quick start",
+      "file": "examples/ContentView.swift"
+    },
+    {
+      "tab": "One-shot",
+      "file": "examples/OneShot.swift"
+    },
+    {
+      "tab": "Styles",
+      "file": "examples/Styles.swift"
+    }
+  ],
+  "tags": {
+    "gesture": [
+      "Tap"
+    ],
+    "pattern": [
+      "Celebrate",
+      "Reward"
+    ],
+    "effect": [
+      "Particles",
+      "Fireworks"
+    ],
+    "element": [
+      "Card",
+      "Button",
+      "Badge"
+    ]
+  },
+  "fill": true,
+  "inspiration": [
+    {
+      "title": "iOS 27 Contacts birthday fireworks",
+      "url": "https://www.youtube.com/shorts/L9Md2bUbR80"
+    }
+  ]
+}
