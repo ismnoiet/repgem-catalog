@@ -19,6 +19,23 @@ func hash01(_ seed: Int, _ k: Int) -> Double {
     return Double(z % 1_000_000) / 1_000_000
 }
 
+/// Where a burst happens and how it looks. A pure function of the burst id, shared by the full effect
+/// and the Reduce Motion fade, so both pick the same spots and colors.
+struct BurstOrigin {
+    var cx: CGFloat
+    var cy: CGFloat
+    var palette: FireworkColors
+    var scale: CGFloat
+}
+
+func burstOrigin(_ s: FireworkStyle, id: Int, size: CGSize) -> BurstOrigin {
+    BurstOrigin(
+        cx: size.width * (s.xRange.lowerBound + (s.xRange.upperBound - s.xRange.lowerBound) * hash01(id, 2)),
+        cy: size.height * (s.yRange.lowerBound + (s.yRange.upperBound - s.yRange.lowerBound) * hash01(id, 3)),
+        palette: s.palettes[Int(hash01(id, 4) * Double(s.palettes.count)) % s.palettes.count],
+        scale: CGFloat(0.7 + 0.6 * hash01(id, 5)))
+}
+
 /// A layer of fireworks that fills its parent. Rockets rise, flash and burst into twinkling dots
 /// that fade out. Put it over any view, usually clipped to the shape that should hold the effect:
 ///
@@ -29,12 +46,16 @@ func hash01(_ seed: Int, _ k: Int) -> Double {
 ///     FireworkFlourish(.milestone, active: isToday)
 ///
 /// For a one-shot celebration use `.fireworkFlourish(trigger:duration:style:)` instead.
-/// Reduce Motion is respected: nothing is drawn.
+/// Reduce Motion is respected: the continuous layer draws nothing, and a one-shot plays a brief still
+/// fade instead (see `FireworkReduceMotion`).
 public struct FireworkFlourish: View {
     private let style: FireworkStyle
     private let active: Bool
     private let start: Double
     private let end: Double?
+    private let reducedFade: Bool
+
+    @State private var stillShown = false
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.fireworkLightBackground) private var onLight
@@ -46,20 +67,35 @@ public struct FireworkFlourish: View {
         self.active = active
         self.start = 0
         self.end = nil
+        self.reducedFade = false
     }
 
     /// Fireworks that start at `start` and stop launching rockets at `end`
     /// (times are `Date.timeIntervalSinceReferenceDate`). Used by the one-shot modifier.
-    init(style: FireworkStyle, start: Double, end: Double?) {
+    init(style: FireworkStyle, start: Double, end: Double?, reducedFade: Bool = false) {
         self.style = style
         self.active = true
         self.start = start
         self.end = end
+        self.reducedFade = reducedFade
     }
 
     public var body: some View {
         if reduceMotion {
-            Color.clear.allowsHitTesting(false)
+            if reducedFade {
+                // No rockets, drift or twinkle: one frozen frame of a few bursts that fades in and out.
+                Canvas { ctx, size in drawStill(&ctx, size) }
+                    .opacity(stillShown ? 1 : 0)
+                    .animation(.easeInOut(duration: 0.25), value: stillShown)
+                    .allowsHitTesting(false)
+                    .task {
+                        stillShown = true
+                        try? await Task.sleep(for: .seconds(0.45))
+                        stillShown = false
+                    }
+            } else {
+                Color.clear.allowsHitTesting(false)
+            }
         } else {
             TimelineView(.animation(paused: !active)) { timeline in
                 let t = timeline.date.timeIntervalSinceReferenceDate
@@ -70,6 +106,34 @@ public struct FireworkFlourish: View {
             .opacity(active ? 1 : 0)
             .animation(.easeInOut(duration: 0.4), value: active)
             .allowsHitTesting(false)
+        }
+    }
+
+    // MARK: - Reduce Motion
+
+    /// A frozen frame of three bursts, partway through their spread. Used instead of the animation.
+    private func drawStill(_ ctx: inout GraphicsContext, _ size: CGSize) {
+        let s = style
+        guard !s.palettes.isEmpty else { return }
+        let seedBase = Int((start * 1000).truncatingRemainder(dividingBy: 100_000)) * 1000
+        let ease = CGFloat(1 - exp(-4.2 * 0.5))
+        var g = ctx
+        g.blendMode = onLight ? .normal : .plusLighter
+        for i in 0..<3 {
+            let origin = burstOrigin(s, id: seedBase + i, size: size)
+            let pal: FireworkColors = onLight
+                ? (lightSurfaceTone(origin.palette.0), lightSurfaceTone(origin.palette.1))
+                : origin.palette
+            for k in 0..<s.particles {
+                let ang = hash01(seedBase + i, 100 + k) * 2 * .pi
+                let reach = s.maxRadius * origin.scale * CGFloat(sqrt(hash01(seedBase + i, 200 + k)))
+                let px = origin.cx + CGFloat(cos(ang)) * reach * ease
+                let py = origin.cy + CGFloat(sin(ang)) * reach * ease
+                let col = hash01(seedBase + i, 500 + k) < 0.5 ? pal.0 : pal.1
+                let d: CGFloat = (1.3 + 0.5 * CGFloat(hash01(seedBase + i, 600 + k))) * (onLight ? 1.9 : 1)
+                g.fill(Path(ellipseIn: CGRect(x: px - d / 2, y: py - d / 2, width: d, height: d)),
+                       with: .color(col.opacity(onLight ? 0.9 : 0.7)))
+            }
         }
     }
 
@@ -92,11 +156,11 @@ public struct FireworkFlourish: View {
             if age < 0 || age > s.totalLife { continue }
             let id = seedBase + i
 
-            let cx = size.width * (s.xRange.lowerBound + (s.xRange.upperBound - s.xRange.lowerBound) * hash01(id, 2))
-            let cy = size.height * (s.yRange.lowerBound + (s.yRange.upperBound - s.yRange.lowerBound) * hash01(id, 3))
-            let rawPal = s.palettes[Int(hash01(id, 4) * Double(s.palettes.count)) % s.palettes.count]
-            let pal: FireworkColors = onLight ? (lightSurfaceTone(rawPal.0), lightSurfaceTone(rawPal.1)) : rawPal
-            let scale = CGFloat(0.7 + 0.6 * hash01(id, 5))
+            let origin = burstOrigin(s, id: id, size: size)
+            let (cx, cy, scale) = (origin.cx, origin.cy, origin.scale)
+            let pal: FireworkColors = onLight
+                ? (lightSurfaceTone(origin.palette.0), lightSurfaceTone(origin.palette.1))
+                : origin.palette
 
             // 1. Rocket trail
             if s.showRockets && age < s.rocketTime {

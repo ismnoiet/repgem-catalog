@@ -11,6 +11,7 @@ private struct FireworkTriggerModifier<T: Equatable>: ViewModifier {
     let trigger: T
     let duration: TimeInterval
     let style: FireworkStyle
+    let reduceMotion: FireworkReduceMotion
 
     @State private var start: Double = 0
     @State private var running = false
@@ -20,7 +21,8 @@ private struct FireworkTriggerModifier<T: Equatable>: ViewModifier {
         content
             .overlay {
                 if running {
-                    FireworkFlourish(style: style, start: start, end: start + duration)
+                    FireworkFlourish(style: style, start: start, end: start + duration,
+                                    reducedFade: reduceMotion == .fade)
                 }
             }
             .onChange(of: trigger) {
@@ -39,6 +41,7 @@ private struct FireworkTriggerModifier<T: Equatable>: ViewModifier {
 public extension View {
     /// Plays fireworks over this view for `duration` seconds each time `trigger` changes.
     /// Apply `.clipShape(...)` after it to keep the effect inside a rounded card.
+    /// With Reduce Motion on, `reduceMotion` decides what plays: a brief still fade (default) or nothing.
     ///
     ///     card
     ///         .fireworkFlourish(trigger: levelUps, duration: 2, style: .milestone)
@@ -46,9 +49,10 @@ public extension View {
     func fireworkFlourish<T: Equatable>(
         trigger: T,
         duration: TimeInterval = 2.0,
-        style: FireworkStyle = .card
+        style: FireworkStyle = .card,
+        reduceMotion: FireworkReduceMotion = .fade
     ) -> some View {
-        modifier(FireworkTriggerModifier(trigger: trigger, duration: duration, style: style))
+        modifier(FireworkTriggerModifier(trigger: trigger, duration: duration, style: style, reduceMotion: reduceMotion))
     }
 
     /// Continuous fireworks over this view while `active` is true.

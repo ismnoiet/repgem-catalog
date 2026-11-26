@@ -22,6 +22,10 @@
       "One-shot modifier. Change the trigger to play the fireworks once, for duration seconds."
     ],
     [
+      "reduceMotion",
+      "One-shot only. What plays when Reduce Motion is on: .fade (a brief still frame, the default) or .none."
+    ],
+    [
       "interval, particles",
       "Seconds between rockets and particles per burst."
     ],

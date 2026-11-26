@@ -21,7 +21,7 @@ Fireworks for any SwiftUI view - Continuous or one-shot, with built-in styles an
 - 🪶 **Stateless**: no stored particles. Each rocket and particle is computed from its index, so nothing is allocated between frames
 - 🎯 **State-driven**: drive `active` from anything, idle layers pause their timeline and cost nothing
 - 🌓 **Dark and light surfaces**
-- ♿ **Reduce Motion aware**: draws nothing
+- ♿ **Reduce Motion aware**: the one-shot plays a brief still fade instead, the continuous layer draws nothing
 
 * * *
 
@@ -173,10 +173,10 @@ FireworkStyle(palettes: [(.cyan, .mint), (.white, .blue)])
 
 ## Accessibility
 
-When Reduce Motion is on, `FireworkFlourish` draws nothing. Don't make fireworks the only signal for something that matters; pair them with text or haptics:
+When Reduce Motion is on, nothing moves. The one-shot modifier plays a brief still fade (a frozen frame of bursts, about half a second) so the moment is still acknowledged; pass `reduceMotion: .none` to draw nothing. The continuous `FireworkFlourish(...)` layer draws nothing. Haptics are up to your app, so pair the celebration with feedback and text:
 
 ```swift
-.fireworkFlourish(trigger: taps, style: .tap)
+.fireworkFlourish(trigger: taps, style: .tap)            // reduceMotion: .fade by default
 .sensoryFeedback(.success, trigger: taps)
 ```
 
