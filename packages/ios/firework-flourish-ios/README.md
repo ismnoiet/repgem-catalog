@@ -6,7 +6,7 @@
 
 Fireworks for any SwiftUI view - Continuous or one-shot, with built-in styles and palettes.
 
-[![version](https://img.shields.io/badge/version-1.0.0-blue.svg)](#)
+[![version](https://img.shields.io/badge/version-1.1.0-blue.svg)](#)
 [![license](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
 [![platform](https://img.shields.io/badge/platform-iOS%2017%2B%20%7C%20macOS%2014%2B%20%7C%20visionOS-lightgrey.svg)](#installation)
 
@@ -31,7 +31,7 @@ Fireworks for any SwiftUI view - Continuous or one-shot, with built-in styles an
 `https://github.com/ismnoiet/firework-flourish-ios`, or in `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/ismnoiet/firework-flourish-ios", from: "1.0.0")
+.package(url: "https://github.com/ismnoiet/firework-flourish-ios", from: "1.1.0")
 ```
 
 then add the `FireworkFlourish` product to your target and `import FireworkFlourish`.

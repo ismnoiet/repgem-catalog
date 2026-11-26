@@ -1,7 +1,7 @@
 {
   "id": "006",
   "slug": "firework-flourish-ios",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "title": "Firework Flourish",
   "kind": "fireworks",
   "desc": "Fireworks for any SwiftUI view, continuous or one-shot, with built-in styles and palettes.",
@@ -53,7 +53,7 @@
   "steps": [
     [
       "1. Add the package in Xcode (File, Add Package Dependencies) or in Package.swift",
-      ".package(url: \"https://github.com/ismnoiet/firework-flourish-ios\", from: \"1.0.0\")"
+      ".package(url: \"https://github.com/ismnoiet/firework-flourish-ios\", from: \"1.1.0\")"
     ],
     [
       "2. Add the FireworkFlourish product to your target, then import it",
@@ -63,7 +63,7 @@
   "meta": [
     [
       "Version",
-      "1.0.0"
+      "1.1.0"
     ],
     [
       "Requires",
