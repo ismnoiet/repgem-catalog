@@ -35,9 +35,9 @@ Recipes with full source. Click a platform to open it.
 
 | Item | What it is | Open |
 |:--|:--|:--|
-| **Edge-Swipe Navigation** | Drag from the screen edge to go back or forward, with a peeling screen. | [![iOS](https://img.shields.io/badge/iOS-3A3F47?style=flat-square&logo=apple&logoColor=FFFFFF&labelColor=3A3F47)](interactions/ios/predictive-nav) |
-| **Notification Group** | Grouped notification card that expands and collapses on tap or drag. | [![iOS](https://img.shields.io/badge/iOS-3A3F47?style=flat-square&logo=apple&logoColor=FFFFFF&labelColor=3A3F47)](interactions/ios/notification-group) |
 | **Notification Icon Tray** | Notifications collapse into small icons in a tray as you scroll. | [![iOS](https://img.shields.io/badge/iOS-3A3F47?style=flat-square&logo=apple&logoColor=FFFFFF&labelColor=3A3F47)](interactions/ios/notification-tray) |
+| **Notification Group** | Grouped notification card that expands and collapses on tap or drag. | [![iOS](https://img.shields.io/badge/iOS-3A3F47?style=flat-square&logo=apple&logoColor=FFFFFF&labelColor=3A3F47)](interactions/ios/notification-group) |
+| **Edge-Swipe Navigation** | Drag from the screen edge to go back or forward, with a peeling screen. | [![iOS](https://img.shields.io/badge/iOS-3A3F47?style=flat-square&logo=apple&logoColor=FFFFFF&labelColor=3A3F47)](interactions/ios/predictive-nav) |
 <!-- items:end -->
 
 > **<!-- count -->5<!-- /count --> items** across <!-- versions -->6<!-- /versions --> platform versions so far, and the list grows with every release. ⭐ Star this catalog repo to follow new ones.
