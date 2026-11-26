@@ -1,20 +1,4 @@
 {
-  "border-beam-android": [
-    "demo.mp4",
-    "poster.jpg"
-  ],
-  "border-beam-ios": [
-    "demo.mp4",
-    "poster.jpg"
-  ],
-  "dragable-cards-android": [
-    "demo.mp4",
-    "poster.jpg"
-  ],
-  "dragable-cards-ios": [
-    "demo.mp4",
-    "poster.jpg"
-  ],
   "dust-dissolve-android": [
     "demo.mp4?h=395ecdc8",
     "poster.jpg?h=6e0ad2d2"
@@ -36,18 +20,6 @@
     "poster.jpg?h=e82485a2"
   ],
   "predictive-nav": [
-    "demo.mp4",
-    "poster.jpg"
-  ],
-  "sticky-range-slider-android": [
-    "demo.mp4",
-    "poster.jpg"
-  ],
-  "sticky-range-slider-ios": [
-    "demo.mp4",
-    "poster.jpg"
-  ],
-  "trip-splash": [
     "demo.mp4",
     "poster.jpg"
   ]
