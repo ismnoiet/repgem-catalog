@@ -22,5 +22,13 @@
   "predictive-nav": [
     "demo.mp4",
     "poster.jpg"
+  ],
+  "trip-splash-android": [
+    "demo.mp4",
+    "poster.jpg"
+  ],
+  "trip-splash-ios": [
+    "demo.mp4",
+    "poster.jpg"
   ]
 }

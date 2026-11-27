@@ -1,0 +1,74 @@
+{
+  "id": "007",
+  "version": "1.0.0",
+  "slug": "trip-splash-ios",
+  "title": "Trip Splash",
+  "kind": "xsplash",
+  "desc": "An orange dot swallows your logo, then a circle opens up your first screen.",
+  "long": "Your logo appears and an orange dot eats its letters one by one. The dot then stretches into a streak that zips across the screen, and a big circle sweeps in from the left to open up your first screen. Hand it your own screen to show, or leave it empty to see a plain placeholder. The circle only uncovers your screen instead of redrawing it, so it stays light on the phone.",
+  "stats": [
+    [
+      "Duration",
+      "1.4 s"
+    ],
+    [
+      "Easing",
+      "Keyframe tracks"
+    ],
+    [
+      "Min iOS",
+      "17"
+    ],
+    [
+      "Framework",
+      "SwiftUI"
+    ]
+  ],
+  "spec": [
+    [
+      "letters",
+      "Each letter follows its own keyframe track and shrinks toward the dot; the dot is drawn on top so they look swallowed."
+    ],
+    [
+      "streak",
+      "The dot stretches into a streak whose head runs to the right edge, then the tail catches up and the streak fades."
+    ],
+    [
+      "reveal",
+      "A circle of almost constant radius slides in from the left edge with a fast ease-out, so the corners are the last thing revealed."
+    ],
+    [
+      "replay",
+      "Tap anywhere to replay. The clock stops when the animation is over."
+    ]
+  ],
+  "sources": [
+    {
+      "tab": "SwiftUI",
+      "file": "TripSplashAnimation.swift"
+    },
+    {
+      "tab": "Add to project",
+      "file": "Usage.swift"
+    }
+  ],
+  "tags": {
+    "gesture": [
+      "Tap"
+    ],
+    "pattern": [
+      "Navigation"
+    ],
+    "effect": [
+      "Morph",
+      "Expand"
+    ],
+    "element": [
+      "Screen"
+    ]
+  },
+  "fill": true,
+  "inspiration": [
+    "Trip.com app launch animation"
+  ]
+}
