@@ -10,7 +10,7 @@
 
 A catalog of polished mobile interactions and drop-in packages, ready to use now, with full source.
 
-[![items](https://img.shields.io/badge/items-5-0B6B4F?style=flat-square)](#-packages)
+[![items](https://img.shields.io/badge/items-6-0B6B4F?style=flat-square)](#-packages)
 [![platforms](https://img.shields.io/badge/iOS%20%C2%B7%20Android%20%C2%B7%20macOS-lightgrey?style=flat-square)](#-packages)
 [![license](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
 [![feedback welcome](https://img.shields.io/badge/feedback-welcome-brightgreen?style=flat-square)](CONTRIBUTING.md)
@@ -35,12 +35,13 @@ Recipes with full source. Click a platform to open it.
 
 | Item | What it is | Open |
 |:--|:--|:--|
+| **Trip Splash** | An orange dot swallows your logo, then a circle opens up your first screen. | [![iOS](https://img.shields.io/badge/iOS-3A3F47?style=flat-square&logo=apple&logoColor=FFFFFF&labelColor=3A3F47)](interactions/ios/trip-splash-ios) [![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=000000&labelColor=3DDC84)](interactions/android/trip-splash-android) |
 | **Notification Icon Tray** | Notifications collapse into small icons in a tray as you scroll. | [![iOS](https://img.shields.io/badge/iOS-3A3F47?style=flat-square&logo=apple&logoColor=FFFFFF&labelColor=3A3F47)](interactions/ios/notification-tray) |
 | **Notification Group** | Grouped notification card that expands and collapses on tap or drag. | [![iOS](https://img.shields.io/badge/iOS-3A3F47?style=flat-square&logo=apple&logoColor=FFFFFF&labelColor=3A3F47)](interactions/ios/notification-group) |
 | **Edge-Swipe Navigation** | Drag from the screen edge to go back or forward, with a peeling screen. | [![iOS](https://img.shields.io/badge/iOS-3A3F47?style=flat-square&logo=apple&logoColor=FFFFFF&labelColor=3A3F47)](interactions/ios/predictive-nav) |
 <!-- items:end -->
 
-> **<!-- count -->5<!-- /count --> items** across <!-- versions -->6<!-- /versions --> platform versions so far, and the list grows with every release. ⭐ Star this catalog repo to follow new ones.
+> **<!-- count -->6<!-- /count --> items** across <!-- versions -->8<!-- /versions --> platform versions so far, and the list grows with every release. ⭐ Star this catalog repo to follow new ones.
 
 ## 💡 Why Repgem
 
