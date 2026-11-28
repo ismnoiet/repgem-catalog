@@ -1,4 +1,4 @@
 {
   "$comment": "The next item number. Numbers are never reused: new-item, the admin and from-template take nextId (or the highest existing number + 1, whichever is larger) and then raise it. Deleting an item never lowers it.",
-  "nextId": 7
+  "nextId": 9
 }
